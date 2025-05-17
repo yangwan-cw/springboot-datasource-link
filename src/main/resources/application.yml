@@ -1,0 +1,37 @@
+server:
+  port: 8088   # 已有配置
+
+spring:
+  # Redis 配置
+  redis:
+#    cluster:
+#      nodes:
+    host: localhost
+    port: 6379
+    password: test@  # 无密码可删除此行
+    database: 0                   # 默认数据库
+    lettuce:
+      pool:
+        max-active: 8             # 最大连接数
+        max-idle: 4               # 最大空闲连接
+  # MySQL 配置
+  datasource:
+    url: jdbc:mysql://localhost:3307/test?useSSL=false&serverTimezone=Asia/Shanghai
+    username: localhost
+    password: test
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 3000
+      maximum-pool-size: 10
+  # MongoDB 配置
+  data:
+    mongodb:
+#      uri: mongodb://mongo_user:mongo_pass@localhost:27017/your_mongo_db?authSource=admin
+      # 或拆分形式（与 uri 二选一）：
+       host: localhost
+       port: 27017
+       database: test
+       authentication-database: test  # 认证数据库
+       username: test
+       password: test
+
